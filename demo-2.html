@@ -12,11 +12,11 @@
 			}
 			.calendar-container {
 				position: absolute;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
+				left: 0;
+				top: 100%;
 				width: 300px;
 				background-color: #fff;
+				z-index: 999;
 			}
 			.operation-cal {
 				height: 40px;
@@ -134,17 +134,32 @@
 				background-color: #5e67a5;
 				color: #fff !important;
 			}
+
+			.apt, .apt1 {
+				position: relative;
+			}
 		</style>
 	</head>
 	<body>
-		<input type="text" id="val" value="2019-08-30">
+		<div class="apt">
+			<input type="text" id="val" value="2019-08-30">
+		</div>
+		<div class="apt1">
+			<input type="text" id="val1" value="2019-05-30">
+		</div>
+		<div class="apt">
+			<input type="text" id="val2" value="2018-07-30">
+		</div>
+		<div class="apt1">
+			<input type="text" id="val3" value="2018-06-30">
+		</div>
 	</body>
 </html>
 <script type="text/javascript" src="./newDate.js"></script>
 <script type="text/javascript">
 //点击获取年月日
 calendar.init({
-	dateshow: true,  //默认false,为true时展示日历
+	dateshow: false,  //默认false,为true时展示日历
 	ymd: function(ops) {  //返回点击的日期
 		console.log(ops);
 		val.value = ops.year+'-'+ops.month+'-'+ops.date
@@ -152,8 +167,20 @@ calendar.init({
 })
 
 //控制显示隐藏日历
-// val.onclick = function () {
-// 	var str = val.value;
-// 	calendar.ymdDarw(str); //传入value值 2018-07-31
-// }
+val.onclick = function (e) {
+	var str = val.value;
+	calendar.ymdDarw(str, e.target.parentElement); //传入value值 2018-07-31
+}
+val1.onclick = function (e) {
+	var str = val1.value;
+	calendar.ymdDarw(str, e.target.parentElement); //传入value值 2018-07-31
+}
+val2.onclick = function (e) {
+	var str = val2.value;
+	calendar.ymdDarw(str, e.target.parentElement); //传入value值 2018-07-31
+}
+val3.onclick = function (e) {
+	var str = val3.value;
+	calendar.ymdDarw(str, e.target.parentElement); //传入value值 2018-07-31
+}
 </script>

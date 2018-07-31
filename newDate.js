@@ -248,13 +248,21 @@ calendar = {
     document.addEventListener('click', goDates);
   },
   //根据年月日渲染
-  ymdDarw: function (ymd) {
+  ymdDarw: function (ymd, name) {
+    this.getCalendarHtml(name)
     this.showHideCal(true)
     this.yearNum = ymd.split('-')[0];
     this.monthNum = Number(ymd.split('-')[1]);
     this.dayNum = Number(ymd.split('-')[2]);
     this.dateDraw()
     this.showTitle()
+  },
+  //获得日历盒子内所有元素
+  getCalendarHtml: function (name) {
+    if(!name) return;
+    var str = document.querySelector('.calendar-container');
+    console.log(str);
+    name.appendChild(str)
   },
   //点击空白部分隐藏日历
   dateShowHide: function () {
